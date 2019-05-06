@@ -4,29 +4,29 @@ This api is a collection of commands that allows for creation of custom controll
 
 # Controllers
 
-| Name                  | VID    | PID    |
-|-----------------------|--------|--------|
-| Riing Controller      | 0x264a | 0x1f41 |
-| Riing Plus Controller | 0x264a | 0x1fa5 |
-| Riing Trio Controller | 0x264a | 0x2135 |
-| DPSG Controller       | 0x264a | 0x2329 |
-| hiyatek (Unreleased?) | 0x264a | 0x2199 |
+| Name                  | VID    | PID (start) | PID (end) |
+|-----------------------|--------|-------------|-----------|
+| Riing Controller      | 0x264a | 0x1f41      | 0x1f51    |
+| Riing Plus Controller | 0x264a | 0x1fa5      | 0x1fb5    |
+| Riing Trio Controller | 0x264a | 0x2135      | 0x2145    |
+| DPSG Controller       | 0x264a | 0x2329      | 0x2329    |
+| hiyatek (Unreleased?) | 0x264a | 0x2199      | 0x22a9    |
 
 # Commands
 
-## Common:
+### Common:
 
 > These commands and values apply to all controllers unless described in specific controller section
 
-|  Name       | Description                                                                                     |
-|-------------|-------------------------------------------------------------------------------------------------|
-| STATUS_BYTE | Byte where ```0xfc``` means success and ```0xfe``` failure                                      |
-| LED_COUNT   | Number of leds supported by a device connected to a port                                        |
-| PORT        | Id of the port<br>Starts from 1 to the number of ports on the controller                        |
-| RGB_MODE    | Byte value indicating which RGB mode to use<br>Check the controller section for specific values |
-| SPEED       | Byte value indicating speed in percent<br>From 0 to 100                                         |
-| COLOR       | 3 bytes in ```[g, r, b]``` format                                                               |
-| COLORS      | List of COLOR bytes ```[g, r, b, g, r, b, ...]```                                               |
+|  Name       | Description                                                                                      |
+|-------------|--------------------------------------------------------------------------------------------------|
+| STATUS_BYTE | Byte where ```0xfc``` means success and ```0xfe``` failure                                       |
+| LED_COUNT   | Number of leds supported by a device connected to a port                                         |
+| PORT        | Id of the port<br>Starts from 1 to the number of ports on the controller                         |
+| RGB_MODE    | Byte value indicating which RGB mode to use<br>Check below for specific values                   |
+| SPEED       | Byte value indicating speed in percent<br>From 0 to 100<br>Speeds from 1 to 19 are ignored       |
+| COLOR       | 3 byte color ```[g, r, b]```                                                                     |
+| COLORS      | List of COLOR bytes ```[g, r, b, g, r, b, ...]```                                                |
 
 ##### RGB_SPEED
 
@@ -38,6 +38,8 @@ This api is a collection of commands that allows for creation of custom controll
 | SLOW    | ```0x03``` |
 
 ##### RGB_MODE
+
+> These modes apply to all controllers unles described in specific controller section
 
 | Name     | Value            | Description
 |----------|------------------|--------------------------------------------------------|
@@ -52,7 +54,9 @@ This api is a collection of commands that allows for creation of custom controll
 
 <br>
 
-##### Commands:
+---
+
+<br>
 
 > Values enclosed in ```<...>``` means they are optional
 >
@@ -93,19 +97,10 @@ This api is a collection of commands that allows for creation of custom controll
 |----------------------|----------------------------------------------|------------------------------------------------|----------------------------------------------------------------|
 | Init                 | ```[0xfe, 0x31]```                           | Null terminated ascii string<br>with PSU model | Initializes the controller                                     |
 | Get Firmware Version | ```--------```                               | ```--------```                                 | Not Supported?                                                 |
-| Set Speed            | See SPEED_TYPE table below                   | ```STATUS_BYTE```                              | Sets speed on ```PORT``` to ```SPEED```                        |
-| Set RGB              | ```[0x30, 0x52, RGB_MODE, <COLORS>]```       | ```STATUS_BYTE```                              | Sets rgb to ```RGB_MODE```<br>lightning mode with ```COLORS``` |
 | Save Profile         | ```--------```                               | ```--------```                                 | Not Supported?                                                 |
+| Set Speed            | Silent: ```[0x30, 0x41, 0x01]```<br>Performance: ```[0x30, 0x41, 0x02]```<br>Off: ```[0x30, 0x41, 0x03]```<br>```[0x30, 0x41, 0x04, SPEED]```                  | ```STATUS_BYTE```                              | Sets speed on ```PORT``` to ```SPEED```                        |
+| Set RGB              | ```[0x30, 0x52, RGB_MODE, <COLORS>]```       | ```STATUS_BYTE```                              | Sets rgb to ```RGB_MODE```<br>lightning mode with ```COLORS``` |
 | Get Data             | See PSU_DATA table below                     | See PSU_DATA table below                       | Get PSU value                                                  |
-
-##### SPEED_TYPE
-
-| Type        | Write Bytes                     |
-|-------------|---------------------------------|
-| Silent      | ```[0x30, 0x41, 0x01]```        |
-| Performance | ```[0x30, 0x41, 0x02]```        |
-| Off         | ```[0x30, 0x41, 0x03]```        |
-| Percentage  | ```[0x30, 0x41, 0x04, SPEED]``` |
 
 ##### PSU_DATA
 
