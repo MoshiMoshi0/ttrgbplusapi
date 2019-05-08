@@ -39,7 +39,7 @@ This api is a collection of commands that allows for creation of custom controll
 
 ##### RGB_MODE
 
-> These modes apply to all controllers unles described in specific controller section
+> These modes apply to all controllers unless described in specific controller section
 
 | Name     | Value            | Description
 |----------|------------------|--------------------------------------------------------|
@@ -98,7 +98,7 @@ This api is a collection of commands that allows for creation of custom controll
 | Init                 | ```[0xfe, 0x31]```                           | Null terminated ascii string<br>with PSU model | Initializes the controller                                     |
 | Get Firmware Version | ```--------```                               | ```--------```                                 | Not Supported?                                                 |
 | Save Profile         | ```--------```                               | ```--------```                                 | Not Supported?                                                 |
-| Set Speed            | Silent: ```[0x30, 0x41, 0x01]```<br>Performance: ```[0x30, 0x41, 0x02]```<br>Off: ```[0x30, 0x41, 0x03]```<br>```[0x30, 0x41, 0x04, SPEED]```                  | ```STATUS_BYTE```                              | Sets speed on ```PORT``` to ```SPEED```                        |
+| Set Speed            | ```[0x30, 0x41, 0x01]```<br>```[0x30, 0x41, 0x02]```<br>```[0x30, 0x41, 0x03]```<br>```[0x30, 0x41, 0x04, SPEED]```                  | ```STATUS_BYTE```                              | Silent mode<br>Performance mode<br>Fan off<br>Set fan to ```SPEED``` |
 | Set RGB              | ```[0x30, 0x52, RGB_MODE, <COLORS>]```       | ```STATUS_BYTE```                              | Sets rgb to ```RGB_MODE```<br>lightning mode with ```COLORS``` |
 | Get Data             | See PSU_DATA table below                     | See PSU_DATA table below                       | Get PSU value                                                  |
 
