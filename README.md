@@ -83,9 +83,21 @@ This api is a collection of commands that allows for creation of custom controll
 
 ## Riing Controller
 
+### Common:
+
+|  Name       | Description                                                                                |
+|-------------|--------------------------------------------------------------------------------------------|
+| PORT_COUNT  | Numer of fans connected to the controller (unverified)                                     |
+| COLOR       | 3 byte color `[r, g, b]`                                                                   |
+| COLORS      | List of COLOR bytes `[r, g, b, r, g, b, ...]`                                              |
+
+<br>
+
 | Name                 | Write Bytes                              | Read Bytes                             | Description                                                               |
 |----------------------|------------------------------------------|----------------------------------------|---------------------------------------------------------------------------|
 | Set Speed            | `[0x32, 0x51, PORT, 0x03, SPEED]`        | `STATUS_BYTE`                          | Sets speed on `PORT` to `SPEED`                                           |
+| Set RGB              | `[0x32, 0x52, PORT, RGB_MODE, <COLORS>]` | `[0xfe]` if next port is used, `[0x00]` if not used (unverified)                             | Sets rgb on `PORT` to `RGB_MODE`<br>lightning mode with `COLORS`          |
+| Get Data             | `[0x33, 0x51, PORT]`                     | `[PORT, PORT_COUNT, SPEED, RPM_L, RPM_H]` | Get data for `PORT`<br>`RPM` is calculated as `RPM_H << 8 + RPM_L`        |
 
 ##### RGB_MODE
 
