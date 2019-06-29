@@ -77,9 +77,22 @@ This api is a collection of commands that allows for creation of custom controll
 ##### Unknown commands
 * Sets speed by RPM?<br>`[0x32, 0x51, PORT, 0x02, PWM_H, PWM_L]`<br>`STATUS_BYTE`
 * Riing Trio?<br>`[0x32, 0x52, port, 0x4d, 0x03, 0x01]`
-* Random mode<br>`[0x32, 0x52, port, 0x00]`
-* Set Fan Normal, Save Profile?<br>`[0x32, 0x51, port, 0x03, speed]`
 * `[0x33, 0x54, port]`
+
+---
+
+## Riing Controller
+
+| Name                 | Write Bytes                              | Read Bytes                             | Description                                                               |
+|----------------------|------------------------------------------|----------------------------------------|---------------------------------------------------------------------------|
+| Set Speed            | `[0x32, 0x51, PORT, 0x03, SPEED]`        | `STATUS_BYTE`                          | Sets speed on `PORT` to `SPEED`                                           |
+
+##### RGB_MODE
+
+| Name     | Value | Description
+|----------|-------|--------------------|
+| FLOW     | 0x00  | `COLORS` not used  |
+| FULL     | 0x01  | Requires 1 `COLOR` |
 
 ---
 
@@ -87,7 +100,7 @@ This api is a collection of commands that allows for creation of custom controll
 
 | Name                 | Write Bytes                                                  | Read Bytes        | Description                                                                   |
 |----------------------|--------------------------------------------------------------|-------------------|-------------------------------------------------------------------------------|
-| Set RGB              | `[0x32, 0x52, PORT, 0x24, 0x03, CHUNK_ID, 0x00, COLORS]` | `STATUS_BYTE` | Sets rgb on `PORT` to `COLORS`<br>The `COLORS` list contains colors for the 3 zones (12+12+6) and is sent in 2 chunks (19+11)<br>`CHUNK_ID` indicates the chunk number starting from 1  |
+| Set RGB              | `[0x32, 0x52, PORT, 0x24, 0x03, CHUNK_ID, 0x00, COLORS]` | `STATUS_BYTE` | Sets rgb on `PORT` to `COLORS`<br>For Riing Trio fans the `COLORS` (30 colors, 3 zones, 12+12+6) list is split in 2 chunks (19+11)<br>For Riing Duo fans the `COLORS` (18 colors, 2 zones, 12+6) list is split in 2 chunks (18+0)<br>`CHUNK_ID` indicates the chunk number starting from 1 |
 
 ---
 
@@ -99,7 +112,7 @@ This api is a collection of commands that allows for creation of custom controll
 | Get Firmware Version | `--------`                                   | `--------`                                     | Not Supported?                                                 |
 | Save Profile         | `--------`                                   | `--------`                                     | Not Supported?                                                 |
 | Set Speed            | `[0x30, 0x41, 0x01]`<br>`[0x30, 0x41, 0x02]`<br>`[0x30, 0x41, 0x03]`<br>`[0x30, 0x41, 0x04, SPEED]` | `STATUS_BYTE` | Silent mode<br>Performance mode<br>Fan off<br>Set fan to `SPEED` |
-| Set RGB              | `[0x30, 0x52, RGB_MODE, <COLORS>]`           | `STATUS_BYTE`                                  | Sets rgb to `RGB_MODE`<br>lightning mode with `COLORS`         |
+| Set RGB              | `[0x30, 0x42, RGB_MODE, <COLORS>]`           | `STATUS_BYTE`                                  | Sets rgb to `RGB_MODE`<br>lightning mode with `COLORS`         |
 | Get Data             | See `PSU_DATA` table below                   | See `PSU_DATA` table below                     | Get PSU value                                                  |
 
 ##### PSU_DATA
