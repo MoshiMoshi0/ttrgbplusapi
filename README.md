@@ -131,21 +131,17 @@ This api is a collection of commands that allows for creation of custom controll
 
 | Name          | Write Bytes     | Read Bytes                                          |
 |---------------|-----------------|-----------------------------------------------------|
-| VIN           |  `[0x31, 0x33]` | `[VALUE_L, VALUE_H]`                                           |
-| VVOut12       |  `[0x31, 0x34]` | `[VALUE_L, VALUE_H]`                                           |
-| VVOut5        |  `[0x31, 0x35]` | `[VALUE_L, VALUE_H]`                                           |
-| VVOut33       |  `[0x31, 0x36]` | `[VALUE_L, VALUE_H]`                                           |
-| VIOut12       |  `[0x31, 0x37]` | `[VALUE_L, VALUE_H]`                                           |
-| VIOut5        |  `[0x31, 0x38]` | `[VALUE_L, VALUE_H]`                                           |
-| VIOut33       |  `[0x31, 0x39]` | `[VALUE_L, VALUE_H]`                                           |
-| Temp          |  `[0x31, 0x3a]` | `[VALUE_L, VALUE_H]`                                           |
-| FanSpeed      |  `[0x31, 0x3b]` | `[VALUE_L, VALUE_H]`                                           |
+| VIN           |  `[0x31, 0x33]` | `[VALUE_L, VALUE_H]`                                |
+| VVOut12       |  `[0x31, 0x34]` | `[VALUE_L, VALUE_H]`                                |
+| VVOut5        |  `[0x31, 0x35]` | `[VALUE_L, VALUE_H]`                                |
+| VVOut33       |  `[0x31, 0x36]` | `[VALUE_L, VALUE_H]`                                |
+| VIOut12       |  `[0x31, 0x37]` | `[VALUE_L, VALUE_H]`                                |
+| VIOut5        |  `[0x31, 0x38]` | `[VALUE_L, VALUE_H]`                                |
+| VIOut33       |  `[0x31, 0x39]` | `[VALUE_L, VALUE_H]`                                |
+| Temp          |  `[0x31, 0x3a]` | `[VALUE_L, VALUE_H]`                                |
+| FanRpm        |  `[0x31, 0x3b]` | `[VALUE_L, VALUE_H]`                                |
 | Model         |  `[0x31, 0x3d]` | Null terminated ascii string with PSU model         |
 | Serial Number |  `[0x31, 0x3f]` | Null terminated ascii string with PSU serial number |
-
-> WATTS = VVOut33 * VIOut33
->
-> EFF = (int)((VVOut12 * VIOut12 + VVOut5 * VIOut5 + VVOut33 * VIOut33) / 10.0)
 
 Value calculation pseudocode:
 ```
@@ -158,6 +154,13 @@ if (sign == 1)
     exponent -= 16
 
 result = Math.Pow(2.0, exponent) * fraction
+```
+```
+WATTS = VVOut33 * VIOut33
+```
+
+```
+EFFICIENCY = (int)((VVOut12 * VIOut12 + VVOut5 * VIOut5 + VVOut33 * VIOut33) / 10.0)
 ```
 
 ##### Unknown commands
