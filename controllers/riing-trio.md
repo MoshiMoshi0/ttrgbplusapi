@@ -1,4 +1,5 @@
 # Riing Trio Controller
+---
 
 ## Common
 
@@ -43,11 +44,9 @@
 | PER_LED | 0x24  | Requires `COLORS` list with `LED_COUNT` colors |
 
 <br>
-<br>
 
 ---
 
-<br>
 <br>
 
 ### Unknown commands

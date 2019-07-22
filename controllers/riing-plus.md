@@ -1,4 +1,5 @@
 # Riing Plus Controller
+---
 
 ## Common
 
@@ -59,11 +60,9 @@
 | Get Data             | `[0x33, 0x51, PORT]`                     | `[PORT, UNKNOWN, SPEED, RPM_L, RPM_H]` | Get data for `PORT`<br>`RPM` is calculated as `RPM_H << 8 + RPM_L`        |
 
 <br>
-<br>
 
 ---
 
-<br>
 <br>
 
 ### Unknown commands

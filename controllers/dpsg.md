@@ -1,4 +1,5 @@
 # DPSG Controller
+---
 
 ## Common
 
@@ -91,8 +92,12 @@ EFFICIENCY = efficiency_lut[(int)(WATTS / 10.0)]
 ```
 > efficiency_lut is different for each psu model, exact lut values are currently unknown
 
+<br>
+
+---
+
+<br>
 
 ##### Unknown commands
 * `[0x31, 0x41]` Save Profile?
 * `[0x30, 0x43, 0x01]`
----
