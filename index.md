@@ -2,10 +2,10 @@
 
 | Name                                             | Note
 |--------------------------------------------------|------------------------------------------------|
-| [Riing Controller](/ttrgbplusapi/controllers/riing)           | :heavy_check_mark: Supported                   |
-| [Riing Plus Controller](/ttrgbplusapi/controllers/riing-plus) | :heavy_check_mark: Supported                   |
-| [Riing Trio Controller](/ttrgbplusapi/controllers/riing-trio) | :heavy_check_mark: Supported                   |
-| [DPSG Controller](/ttrgbplusapi/controllers/dpsg)             | :heavy_check_mark: Supported                   |
+| [Riing Controller]({% link /controllers/riing %})           | :heavy_check_mark: Supported                   |
+| [Riing Plus Controller]({% link /controllers/riing-plus %}) | :heavy_check_mark: Supported                   |
+| [Riing Trio Controller]({% link /controllers/riing-trio %}) | :heavy_check_mark: Supported                   |
+| [DPSG Controller]({% link /controllers/dpsg %})             | :heavy_check_mark: Supported                   |
 | hiyatek                                          | :question: Unreleased (0x264a, 0x2199, 0x22a9) |
 
 # Devices

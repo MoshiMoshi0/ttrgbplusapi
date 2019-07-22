@@ -7,13 +7,11 @@
 | 0x264a | 0x2329      | 0x2329    |
 
 <br>
-<br>
 
 |  Name       | Description                                                                                |
 |-------------|--------------------------------------------------------------------------------------------|
 | STATUS_BYTE | Byte where `0xfc` means success and `0xfe` failure                                         |
-| LED_COUNT   | Number of leds supported by a device connected to a port                                   |
-| PORT        | Id of the port<br>Starts from 1 to the number of ports on the controller                   |
+| LED_COUNT   | Number of fan leds in the PSU                                                       |
 | RGB_MODE    | Byte value indicating which RGB mode to use<br>Check below for specific values             |
 | SPEED       | Byte value indicating speed in percent<br>From 0 to 100<br>Speeds from 1 to 19 are ignored |
 | COLOR       | 3 byte color `[g, r, b]`                                                                   |
@@ -88,7 +86,6 @@ result = Math.Pow(2.0, exponent) * fraction
 ```cpp
 WATTS = VVOut12 * VIOut12 + VVOut5 * VIOut5 + VVOut33 * VIOut33
 ```
-
 ```cpp
 EFFICIENCY = efficiency_lut[(int)(WATTS / 10.0)]
 ```
