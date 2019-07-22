@@ -3,9 +3,9 @@
 
 ## Common
 
-| VID    | PID (start) | PID (end) |
-|--------|-------------|-----------|
-| 0x264a | 0x1fa5      | 0x1fb5    |
+| VID      | PID (start)   | PID (end)   |
+|----------|---------------|-------------|
+| `0x264a` | `0x1fa5`      | `0x1fb5`    |
 
 <br>
 
@@ -30,16 +30,16 @@
 
 ##### RGB_MODE
 
-| Name     | Value            | Description
-|----------|------------------|------------------------------------------------|
-| FLOW     | 0x00 + RGB_SPEED | `COLORS` not used                              |
-| SPECTRUM | 0x04 + RGB_SPEED | `COLORS` not used                              |
-| RIPPLE   | 0x08 + RGB_SPEED | Requires 1 `COLOR`                             |
-| BLINK    | 0x0c + RGB_SPEED | Requires `COLORS` list with `LED_COUNT` colors |
-| PULSE    | 0x10 + RGB_SPEED | Requires `COLORS` list with `LED_COUNT` colors |
-| WAVE     | 0x14 + RGB_SPEED | Requires `COLORS` list with `LED_COUNT` colors |
-| PER_LED  | 0x18             | Requires `COLORS` list with `LED_COUNT` colors |
-| FULL     | 0x19             | Requires 1 `COLOR`                             |
+| Name     | Value              | Description
+|----------|--------------------|------------------------------------------------|
+| FLOW     | `0x00 + RGB_SPEED` | `COLORS` not used                              |
+| SPECTRUM | `0x04 + RGB_SPEED` | `COLORS` not used                              |
+| RIPPLE   | `0x08 + RGB_SPEED` | Requires 1 `COLOR`                             |
+| BLINK    | `0x0c + RGB_SPEED` | Requires `COLORS` list with `LED_COUNT` colors |
+| PULSE    | `0x10 + RGB_SPEED` | Requires `COLORS` list with `LED_COUNT` colors |
+| WAVE     | `0x14 + RGB_SPEED` | Requires `COLORS` list with `LED_COUNT` colors |
+| PER_LED  | `0x18`             | Requires `COLORS` list with `LED_COUNT` colors |
+| FULL     | `0x19`             | Requires 1 `COLOR`                             |
 
 ## Commands
 

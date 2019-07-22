@@ -3,9 +3,9 @@
 
 ## Common
 
-| VID    | PID (start) | PID (end) |
-|--------|-------------|-----------|
-| 0x264a | 0x2135      | 0x2145    |
+| VID      | PID (start)   | PID (end)   |
+|----------|---------------|-------------|
+| `0x264a` | `0x2135`      | `0x2145`    |
 
 <br>
 
@@ -28,8 +28,8 @@
 > 
 > `Write Bytes` of each command have to begin with the `REPORT_ID` (`0x00`) but it's skipped to improve readability. Might be optional depending on the hid library
 
-| Name                 | Write Bytes                                                  | Read Bytes        | Description                                                                   |
-|----------------------|--------------------------------------------------------------|-------------------|-------------------------------------------------------------------------------|
+| Name                 | Write Bytes                              | Read Bytes                             | Description                                                                |
+|----------------------|------------------------------------------|----------------------------------------|----------------------------------------------------------------------------|
 | Init                 | `[0xfe, 0x33]`                           | `STATUS_BYTE`                          | Initializes the controller                                                |
 | Get Firmware Version | `[0x33, 0x50]`                           | `[MAJOR, MINOR, PATCH]`                | Gets controller firmware version<br>Returns 3 bytes that make the version |
 | Save Profile         | `[0x32, 0x53]`                           | `STATUS_BYTE`                          | Saves the current `RGB_MODE` and `SPEED` to the controller memory         |
@@ -39,9 +39,9 @@
 
 ### RGB_MODE
 
-| Name     | Value | Description
-|---------|-------|------------------------------------------------|
-| PER_LED | 0x24  | Requires `COLORS` list with `LED_COUNT` colors |
+| Name    | Value   | Description                                    |
+|---------|---------|------------------------------------------------|
+| PER_LED | `0x24`  | Requires `COLORS` list with `LED_COUNT` colors |
 
 <br>
 
