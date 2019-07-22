@@ -6,6 +6,9 @@
 |--------|-------------|-----------|
 | 0x264a | 0x2329      | 0x2329    |
 
+<br>
+<br>
+
 |  Name       | Description                                                                                |
 |-------------|--------------------------------------------------------------------------------------------|
 | STATUS_BYTE | Byte where `0xfc` means success and `0xfe` failure                                         |
@@ -50,8 +53,6 @@
 | Name                 | Write Bytes                                  | Read Bytes                                     | Description                                                    |
 |----------------------|----------------------------------------------|------------------------------------------------|----------------------------------------------------------------|
 | Init                 | `[0xfe, 0x31]`                               | Null terminated ascii string<br>with PSU model | Initializes the controller                                     |
-| Get Firmware Version | `--------`                                   | `--------`                                     | Not Supported / Unknown                                                 |
-| Save Profile         | `--------`                                   | `--------`                                     | Not Supported / Unknown                                                 |
 | Get Data             | See `PSU_DATA` table below                   | See `PSU_DATA` table below                     | Get PSU value                                                  |
 | Set Speed            | `[0x30, 0x41, 0x01]`<br>`[0x30, 0x41, 0x02]`<br>`[0x30, 0x41, 0x03]`<br>`[0x30, 0x41, 0x04, SPEED]` | `STATUS_BYTE` | Silent mode<br>Performance mode<br>Fan off<br>Set fan to `SPEED` |
 | Set RGB              | `[0x30, 0x42, RGB_MODE, <COLORS>]`           | `STATUS_BYTE`                                  | Sets rgb to `RGB_MODE`<br>lightning mode with `COLORS`         |
