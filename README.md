@@ -6,10 +6,10 @@ This api is a collection of commands that allows for creation of custom controll
 
 | Name                                             | Note
 |--------------------------------------------------|------------------------------------------------|
-| [Riing Controller](/controllers/riing)           | :heavy_check_mark: Supported                   |
-| [Riing Plus Controller](/controllers/riing-plus) | :heavy_check_mark: Supported                   |
-| [Riing Trio Controller](/controllers/riing-trio) | :heavy_check_mark: Supported                   |
-| [DPSG Controller](/controllers/dpsg)             | :heavy_check_mark: Supported                   |
+| [Riing Controller](/ttrgbplusapi/controllers/riing)           | :heavy_check_mark: Supported                   |
+| [Riing Plus Controller](/ttrgbplusapi/controllers/riing-plus) | :heavy_check_mark: Supported                   |
+| [Riing Trio Controller](/ttrgbplusapi/controllers/riing-trio) | :heavy_check_mark: Supported                   |
+| [DPSG Controller](/ttrgbplusapi/controllers/dpsg)             | :heavy_check_mark: Supported                   |
 | hiyatek                                          | :question: Unreleased (0x264a, 0x2199, 0x22a9) |
 
 ## Devices
