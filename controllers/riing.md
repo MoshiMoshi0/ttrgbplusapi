@@ -17,7 +17,6 @@
 | RGB_MODE    | Byte value indicating which RGB mode to use<br>Check below for specific values             |
 | SPEED       | Byte value indicating speed in percent<br>From 0 to 100<br>Speeds from 1 to 19 are ignored |
 | COLOR       | 3 byte color `[r, g, b]`                                                                   |
-| COLORS      | List of COLOR bytes `[r, g, b, r, g, b, ...]`                                              |
 
 ## Commands
 
@@ -28,15 +27,18 @@
 > 
 > `Write Bytes` of each command have to begin with the `REPORT_ID` (`0x00`) but it's skipped to improve readability. Might be optional depending on the hid library
 
-| Name                 | Write Bytes                              | Read Bytes                                          | Description                                                        |
-|----------------------|------------------------------------------|-----------------------------------------------------|--------------------------------------------------------------------|
-| Set Speed            | `[0x32, 0x51, PORT, 0x03, SPEED]`        | `STATUS_BYTE`                                       | Sets speed on `PORT` to `SPEED`                                    |
-| Set RGB              | `[0x32, 0x52, PORT, RGB_MODE, <COLORS>]` | `[0xfe]` if next port is used, `[0x00]` if not used | Sets rgb on `PORT` to `RGB_MODE`<br>lightning mode with `COLORS`   |
-| Get Data             | `[0x33, 0x51, PORT]`                     | `[PORT, PORT_COUNT, SPEED, RPM_L, RPM_H]`           | Get data for `PORT`<br>`RPM` is calculated as `RPM_H << 8 + RPM_L` |
+| Name                 | Write Bytes                             | Read Bytes                                          | Description                                                        |
+|----------------------|-----------------------------------------|-----------------------------------------------------|--------------------------------------------------------------------|
+| Init                 | `[0xfe, 0x33]`                          | `STATUS_BYTE`                                       | Initializes the controller                                         |
+| Get Firmware Version | `[0x33, 0x50]`                          | `[MAJOR, MINOR, PATCH]`                             | Gets controller firmware version<br>Returns 3 bytes that make the version |
+| Save Profile         | `[0x32, 0x53]`                          | `STATUS_BYTE`                                       | Saves the current `RGB_MODE` and `SPEED` to the controller memory  |
+| Set Speed            | `[0x32, 0x51, PORT, 0x03, SPEED]`       | `STATUS_BYTE`                                       | Sets speed on `PORT` to `SPEED`                                    |
+| Set RGB              | `[0x32, 0x52, PORT, RGB_MODE, <COLOR>]` | `[0xfe]` if next port is used, `[0x00]` if not used (unverified) | Sets rgb on `PORT` to `RGB_MODE`<br>lightning mode with `COLORS`   |
+| Get Data             | `[0x33, 0x51, PORT]`                    | `[PORT, PORT_COUNT, SPEED, RPM_L, RPM_H]`           | Get data for `PORT`<br>`RPM` is calculated as `RPM_H << 8 + RPM_L` |
 
 ### RGB_MODE
 
-| Name     | Value   | Description        |
-|----------|---------|--------------------|
-| FLOW     | `0x00`  | `COLORS` not used  |
-| FULL     | `0x01`  | Requires 1 `COLOR` |
+| Name     | Value   | Description     |
+|----------|---------|-----------------|
+| FLOW     | `0x00`  |                 |
+| FULL     | `0x01`  | Requires `COLOR`|
