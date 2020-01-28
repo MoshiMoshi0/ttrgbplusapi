@@ -28,8 +28,8 @@
 > 
 > `Write Bytes` of each command have to begin with the `REPORT_ID` (`0x00`) but it's skipped to improve readability. Might be optional depending on the hid library
 
-| Name                 | Write Bytes                              | Read Bytes                             | Description                                                                |
-|----------------------|------------------------------------------|----------------------------------------|----------------------------------------------------------------------------|
+| Name                 | Write Bytes                              | Read Bytes                             | Description                                                               |
+|----------------------|------------------------------------------|----------------------------------------|---------------------------------------------------------------------------|
 | Init                 | `[0xfe, 0x33]`                           | `STATUS_BYTE`                          | Initializes the controller                                                |
 | Get Firmware Version | `[0x33, 0x50]`                           | `[MAJOR, MINOR, PATCH]`                | Gets controller firmware version<br>Returns 3 bytes that make the version |
 | Save Profile         | `[0x32, 0x53]`                           | `STATUS_BYTE`                          | Saves the current `RGB_MODE` and `SPEED` to the controller memory         |

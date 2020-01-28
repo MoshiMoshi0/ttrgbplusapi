@@ -99,5 +99,5 @@ EFFICIENCY = efficiency_lut[(int)(WATTS / 10.0)]
 <br>
 
 ##### Unknown commands
-* `[0x31, 0x41]` Save Profile?
-* `[0x30, 0x43, 0x01]`
+* `[0x31, 0x41]`
+* `[0x30, 0x43, 0x01]` Save Profile?
