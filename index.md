@@ -6,7 +6,7 @@
 | [Riing Plus Controller]({{ site.baseurl }}{% link controllers/riing-plus.md %}) | :heavy_check_mark: |                                     |
 | [Riing Trio Controller]({{ site.baseurl }}{% link controllers/riing-trio.md %}) | :heavy_check_mark: |                                     |
 | [DPSG Controller]({{ site.baseurl }}{% link controllers/dpsg.md %})             | :heavy_check_mark: |                                     |
-| [Riing Quad Controller]({{ site.baseurl }}{% link controllers/riing-quad.md %}) | :x:                |                                     |
+| [Riing Quad Controller]({{ site.baseurl }}{% link controllers/riing-quad.md %}) | :heavy_check_mark: |                                     |
 | "hiyatek"                                                                       | :question:         | 0x264a, 0x2199, 0x21a9              |
 
 # Devices
@@ -21,7 +21,7 @@
 | Pacific W4                  | :heavy_check_mark: |                                |
 | Riing Duo 12/14             | :heavy_check_mark: |                                |
 | Toughpower iRGB PLUS        | :heavy_check_mark: |                                |
-| Toughpower DPSG             | :question:         | not verified                   |
+| Toughpower DPSG             | :heavy_check_mark: |                                |
 | WaterRam RGB                | :question:         | not verified                   |
 | Pacific CL360/RL360         | :question:         | not verified                   |
 | Pacific V-GTX/V-RTX         | :question:         | not verified                   |

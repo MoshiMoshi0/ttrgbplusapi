@@ -35,7 +35,7 @@
 | Save Profile         | `[0x32, 0x53]`                           | `STATUS_BYTE`                          | Saves the current `RGB_MODE` and `SPEED` to the controller memory         |
 | Get Data             | `[0x33, 0x51, PORT]`                     | `[PORT, UNKNOWN, SPEED, RPM_L, RPM_H]` | Get data for `PORT`<br>`RPM` is calculated as `RPM_H << 8 + RPM_L`        |
 | Set Speed            | `[0x32, 0x51, PORT, 0x01, SPEED]`        | `STATUS_BYTE`                          | Sets speed on `PORT` to `SPEED`                                           |
-| Set RGB              | `[0x32, 0x52, PORT, RGB_MODE, 0x03, CHUNK_ID, 0x00, COLORS]` | `STATUS_BYTE` | Sets rgb on `PORT` to `COLORS`<br>For Riing Trio fans the `COLORS` (30 colors, 3 zones, 12+12+6) list is split in 2 chunks (19+11)<br>For Riing Duo fans the `COLORS` (18 colors, 2 zones, 12+6) list is split in 2 chunks (18+0)<br>`CHUNK_ID` indicates the chunk number starting from 1 |
+| Set RGB              | `[0x32, 0x52, PORT, RGB_MODE, 0x03, CHUNK_ID, 0x00, COLORS]` | `STATUS_BYTE`      | Sets rgb on `PORT` to `RGB_MODE`<br>lightning mode with `COLORS`<br>`COLORS` list is split into chunks with 19 `COLOR`<br>min chunks: 2 and max chunks 4<br>`CHUNK_ID` starts from `0x01` |
 
 ### RGB_MODE
 

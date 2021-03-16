@@ -12,7 +12,7 @@
 |  Name       | Description                                                                                |
 |-------------|--------------------------------------------------------------------------------------------|
 | STATUS_BYTE | Byte where `0xfc` means success and `0xfe` failure                                         |
-| LED_COUNT   | Number of fan leds in the PSU                                                       |
+| LED_COUNT   | Number of fan leds in the PSU                                                              |
 | RGB_MODE    | Byte value indicating which RGB mode to use<br>Check below for specific values             |
 | SPEED       | Byte value indicating speed in percent<br>From 0 to 100<br>Speeds from 1 to 19 are ignored |
 | COLOR       | 3 byte color `[g, r, b]`                                                                   |
@@ -29,16 +29,16 @@
 
 ##### RGB_MODE
 
-| Name     | Value              | Description
-|----------|--------------------|------------------------------------------------|
-| FLOW     | `0x00 + RGB_SPEED` | `COLORS` not used                              |
-| SPECTRUM | `0x04 + RGB_SPEED` | `COLORS` not used                              |
-| RIPPLE   | `0x08 + RGB_SPEED` | Requires 1 `COLOR`                             |
-| BLINK    | `0x0c + RGB_SPEED` | Requires `COLORS` list with `LED_COUNT` colors |
-| PULSE    | `0x10 + RGB_SPEED` | Requires `COLORS` list with `LED_COUNT` colors |
-| WAVE     | `0x14 + RGB_SPEED` | Requires `COLORS` list with `LED_COUNT` colors |
-| PER_LED  | `0x18`             | Requires `COLORS` list with `LED_COUNT` colors |
-| FULL     | `0x19`             | Requires 1 `COLOR`                             |
+| Name     | Value              | Description                                    | Support
+|----------|--------------------|------------------------------------------------|----------
+| FLOW     | `0x00 + RGB_SPEED` | `COLORS` not used                              | DPSG, iRGB PLUS (Riing Plus)
+| SPECTRUM | `0x04 + RGB_SPEED` | `COLORS` not used                              | DPSG, iRGB PLUS (Riing Plus)
+| RIPPLE   | `0x08 + RGB_SPEED` | Requires 1 `COLOR`                             | DPSG, iRGB PLUS (Riing Plus)
+| BLINK    | `0x0c + RGB_SPEED` | Requires `COLORS` list with `LED_COUNT` colors | DPSG, iRGB PLUS (Riing Plus)
+| PULSE    | `0x10 + RGB_SPEED` | Requires `COLORS` list with `LED_COUNT` colors | DPSG, iRGB PLUS (Riing Plus)
+| WAVE     | `0x14 + RGB_SPEED` | Requires `COLORS` list with `LED_COUNT` colors | DPSG, iRGB PLUS (Riing Plus)
+| PER_LED  | `0x18`             | Requires `COLORS` list with `LED_COUNT` colors | DPSG, iRGB PLUS (Riing Plus), iRGB PLUS (Riing Duo)
+| FULL     | `0x19`             | Requires 1 `COLOR`                             | DPSG, iRGB PLUS (Riing Plus)
 
 ## Commands
 

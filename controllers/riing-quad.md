@@ -1,4 +1,4 @@
-# Riing Trio Controller
+# Riing Quad Controller
 ---
 
 ## Common
@@ -7,11 +7,49 @@
 |----------|---------------|-------------|
 | `0x264a` | `0x2260`      | `0x2270`    |
 
-> Zones [18, 18, 9, 9] = 54 leds
+<br>
+
+|  Name       | Description                                                                                |
+|-------------|--------------------------------------------------------------------------------------------|
+| STATUS_BYTE | Byte where `0xfc` means success and `0xfe` failure                                         |
+| LED_COUNT   | Number of leds supported by a device connected to a port                                   |
+| PORT        | Id of the port<br>Starts from 1 to the number of ports on the controller                   |
+| RGB_MODE    | Byte value indicating which RGB mode to use<br>Check below for specific values             |
+| SPEED       | Byte value indicating speed in percent<br>From 0 to 100<br>Speeds from 1 to 19 are ignored |
+| COLOR       | 3 byte color `[g, r, b]`                                                                   |
+| COLORS      | List of COLOR bytes `[g, r, b, g, r, b, ...]`                                              |
+
+## Commands
+
+> Values enclosed in `<...>` means they are optional
+>
+> `Read Bytes` of each command starts with `[<REPORT_ID>, FIRST_WRITE_BYTE, SECOND_WRITE_BYTE]` 
+> but are skipped to improve readability. `REPORT_ID` is always `0x00` and is optional depending on the hid library
+> 
+> `Write Bytes` of each command have to begin with the `REPORT_ID` (`0x00`) but it's skipped to improve readability. Might be optional depending on the hid library
+
+| Name                 | Write Bytes                              | Read Bytes                             | Description                                                               |
+|----------------------|------------------------------------------|----------------------------------------|---------------------------------------------------------------------------|
+| Init                 | `[0xfe, 0x33]`                           | `STATUS_BYTE`                          | Initializes the controller                                                |
+| Get Firmware Version | `[0x33, 0x50]`                           | `[MAJOR, MINOR, PATCH]`                | Gets controller firmware version<br>Returns 3 bytes that make the version |
+| Get Data             | `[0x33, 0x51, PORT]`                     | `[PORT, UNKNOWN, SPEED, RPM_L, RPM_H]` | Get data for `PORT`<br>`RPM` is calculated as `RPM_H << 8 + RPM_L`        |
+| Set Speed            | `[0x32, 0x51, PORT, 0x01, SPEED]`        | `STATUS_BYTE`                          | Sets speed on `PORT` to `SPEED`                                           |
+| Set RGB              | `[0x32, 0x52, PORT, RGB_MODE, COLORS]`   | `STATUS_BYTE`                          | Sets rgb on `PORT` to `COLORS`                                            |
+
+### RGB_MODE
+
+| Name    | Value   | Description                                    |
+|---------|---------|------------------------------------------------|
+| PER_LED | `0x24`  | Requires `COLORS` list with `LED_COUNT` colors |
+
+<br>
+
+---
+
+<br>
 
 ### Unknown commands
-* Write size 193 or 65
-* `[0xfe, 0x33]` Init
+* `[0x32, 0x53]`: Save profile?, reported controller freeze
 * `[0x32, 0x52, PORT, 0x24, ????, ????, ????, ...?]` Set RGB
 * `[0x32, 0x52, PORT, 0x24, 0x03, 0x01, 0x00, ...?]` Set RGB
 * `[0x32, 0x52, PORT, 0x24, 0x03, 0x02, 0x00, ...?]` Set RGB
