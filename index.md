@@ -15,6 +15,7 @@
 |-----------------------------|--------------------|--------------------------------|
 | Riing Plus 12/14/20         | :heavy_check_mark: |                                |
 | Riing Trio 12/14            | :heavy_check_mark: |                                |
+| Riing Quad 12/14            | :heavy_check_mark: |                                |
 | Pure Plus 12/14             | :heavy_check_mark: |                                |
 | Floe Riing RGB 240/280/360  | :heavy_check_mark: |                                |
 | Pacific PR22-D5 Plus        | :heavy_check_mark: |                                |
@@ -27,4 +28,3 @@
 | Pacific V-GTX/V-RTX         | :question:         | not verified                   |
 | Pacific Lumi/Rad/R1/Fitting | :question:         | not verified                   |
 | Pacific W5/W6               | :question:         | temperature sensor unsupported |
-| Riing Quad 12/14            | :x:                |                                |
