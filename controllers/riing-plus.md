@@ -57,7 +57,8 @@
 | Save Profile         | `[0x32, 0x53]`                           | `STATUS_BYTE`                          | Saves the current `RGB_MODE` and `SPEED` to the controller memory         |
 | Set Speed            | `[0x32, 0x51, PORT, 0x01, SPEED]`        | `STATUS_BYTE`                          | Sets speed on `PORT` to `SPEED`                                           |
 | Set RGB              | `[0x32, 0x52, PORT, RGB_MODE, <COLORS>]` | `STATUS_BYTE`                          | Sets rgb on `PORT` to `RGB_MODE`<br>lightning mode with `COLORS`          |
-| Get Data             | `[0x33, 0x51, PORT]`                     | `[PORT, UNKNOWN, SPEED, RPM_L, RPM_H]` | Get data for `PORT`<br>`RPM` is calculated as `RPM_H << 8 + RPM_L`        |
+| Get Fan Data         | `[0x33, 0x51, PORT]`                     | `[PORT, UNKNOWN, SPEED, RPM_L, RPM_H]` | Get fan data for `PORT`<br>`RPM` is calculated as `RPM_H << 8 + RPM_L`        |
+| Get RGB Data         | `[0x33, 0x52, PORT]`                     | `[PORT, RGB_MODE + RGB_SPEED, <COLOR(S)>]` | Get rgb data for `PORT` |
 
 <br>
 
